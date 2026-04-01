@@ -1,0 +1,21 @@
+<html>
+  <body>
+    <div id="base"></div>
+
+    <script type="module">
+        const base = window.base
+        let myGlobal = { arr: [] }
+        function polyVariantMake() { return new Uint16Array(1000) }
+        function polyVariantMake2() { return new Uint16Array(1000) }
+        function polyVariantMake3() { return new Uint16Array(1000) }
+        function polyVariantMake4() { return new Uint16Array(1000) }
+        
+        setInterval(() => {
+            myGlobal.arr.push(polyVariantMake())
+            myGlobal.arr.push(polyVariantMake2())
+            myGlobal.arr.push(polyVariantMake3())
+            myGlobal.arr.push(polyVariantMake4())
+        }, 100);
+    </script>
+  </body>
+</html>

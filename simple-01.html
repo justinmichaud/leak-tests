@@ -1,0 +1,14 @@
+<html>
+  <body>
+    <div id="base"></div>
+
+    <script type="module">
+        const base = window.base
+        let myGlobal = { arr: [] }
+        
+        setInterval(() => {
+            myGlobal.arr.push(new Uint16Array(1000))
+        }, 1000);
+    </script>
+  </body>
+</html>

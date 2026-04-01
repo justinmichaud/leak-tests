@@ -1,0 +1,15 @@
+<html>
+  <body>
+    <div id="base"></div>
+
+    <script type="module">
+      setInterval(() => {
+          window.base.onClick = (function() {
+            let prev = window.base.onClick
+            let x = new Uint16Array(1000)
+            return (a) => a + prev(x.length)
+          })()
+      }, 100)
+    </script>
+  </body>
+</html>

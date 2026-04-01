@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <div id="base"></div>
+
+    <script type="module">
+      let x = () => 0
+      setInterval(() => {
+          x = (function() {
+            let arr = new Uint16Array(1000)
+            let copy = x
+            return () => copy() + arr.length
+          })()
+      }, 100)
+    </script>
+  </body>
+</html>

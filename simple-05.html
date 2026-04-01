@@ -1,0 +1,12 @@
+<html>
+  <body>
+    <div id="base"></div>
+
+    <script type="module">
+      let globObj = { e: new MessageEvent("test", { data: { xxxxxx: [] } }) }
+      setInterval(() => {
+          globObj.e.data.xxxxxx.push(new Uint16Array(1000))
+      }, 100)
+    </script>
+  </body>
+</html>

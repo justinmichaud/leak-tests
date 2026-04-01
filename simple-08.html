@@ -1,0 +1,16 @@
+<html>
+  <body>
+    <div id="base"></div>
+
+    <script type="module">
+      const strings = [];
+      setInterval(() => {
+        const iframe = document.createElement('iframe');
+        document.body.appendChild(iframe);
+        const str = iframe.contentWindow.eval('window.obj = new Uint16Array(1000); String("hi")');
+        iframe.remove();
+        strings.push(str);
+      }, 100);
+    </script>
+  </body>
+</html>
