@@ -1,0 +1,31 @@
+<html>
+  <body>
+    <script type="module">
+      const workerCode = `
+        let processing = false;
+
+        async function processNext() {
+          processing = true;
+          await new Promise(resolve => setTimeout(resolve, 1000));
+          processing = false;
+        }
+
+        self.onmessage = async (e) => {
+          console.log("Worker received:", e.data);
+          if (!processing) {
+            await processNext();
+          }
+        };
+      `;
+
+      const blob = new Blob([workerCode], { type: "application/javascript" });
+      const worker = new Worker(URL.createObjectURL(blob));
+
+      let count = 0;
+      setInterval(() => {
+        const largeArray = new ArrayBuffer(1000);
+        worker.postMessage({ id: count++, data: largeArray });
+      }, 100);
+    </script>
+  </body>
+</html>
